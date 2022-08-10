@@ -1,0 +1,22 @@
+name: QuantumDungeons
+
+author: SchnTgaiSpock
+
+description: Adds infinite dungeons to Slimefun
+
+main: io.github.schntgaispock.quantumdungeons.QuantumDungeons
+
+website: https://github.com/SchnTgaiSpock/QuantumDungeons
+
+version: ${project.version}
+
+api-version: 1.14
+
+depend:
+- Slimefun
+
+commands:
+  slimehud:
+    description: /quantumdungeons
+    aliases: [qdungeons, qd]
+    usage: Press [tab] for usage hints
