@@ -1,3 +1,7 @@
 options:
 
   auto-update: true
+
+dungeon:
+
+  world-name: dungeon
