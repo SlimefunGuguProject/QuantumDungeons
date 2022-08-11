@@ -2,6 +2,26 @@ options:
 
   auto-update: true
 
-dungeon:
+dungeons:
 
   world-name: dungeon
+
+  # Default cooldown in seconds of how long until the player can create a new dungeon
+  # Default value is 900s or 15min
+  cooldown: 900
+
+  # Default timer in seconds of how long each dungeon run can last
+  # Default value is 600s or 10min, giving a 5min waiting period if the player
+  # survives until the timer runs out
+  timer: 600
+
+  basic:
+
+    # Override the default times specified in dungeons.cooldown and dungeons.timer in here
+    cooldown: 900
+    timer: 600
+
+  ancient:
+
+    cooldown: 900
+    timer: 600
