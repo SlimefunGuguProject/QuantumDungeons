@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.slimefun;
+package io.github.schntgaispock.quantumdungeons.core.slimefun;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -8,19 +8,95 @@ import io.github.schntgaispock.quantumdungeons.theme.ThemedItemStack;
 import io.github.schntgaispock.quantumdungeons.theme.QDTheme.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class QDStacks {
 
     // ---- Guide Only ----
     
-    public static final ItemStack GUIDE_ITEM = new CustomItemStack(
+    public static final ItemStack GUIDE_ITEM_MAIN = new CustomItemStack(
+        Material.CRACKED_STONE_BRICKS,
+        Theme.DUNGEON.getColor() + "Quantum Dungeons"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_MATERIALS = new CustomItemStack(
+        Material.PRISMARINE_SHARD,
+        Theme.DIMENSIONAL.getColor() + "Materials"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_TOOLS = new CustomItemStack(
+        Material.SPYGLASS,
+        Theme.DIMENSIONAL.getColor() + "Tools"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_CATALYSTS = new CustomItemStack(
+        Material.GRAY_DYE,
+        Theme.CATALYST.getColor() + "Catalysts"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_RECORDS = new CustomItemStack(
+        Material.MUSIC_DISC_CHIRP,
+        Theme.RECORD.getColor() + "Records"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_DUNGEON = new CustomItemStack(
         Material.MOSSY_STONE_BRICKS,
-        Theme.DIMENSIONAL.getColor() + "Quantum Dungeons"
+        Theme.DUNGEON.getColor() + "Dungeon Items"
+    );
+    
+    public static final ItemStack GUIDE_ITEM_HIDDEN = new CustomItemStack(
+        Material.BARRIER,
+        "This should never be shown"
     );
 
     public static final ItemStack GUIDE_VOIDAL = new CustomItemStack(
         Material.ENDERMAN_SPAWN_EGG,
-        Theme.DIMENSIONAL.getColor() + "Voidal"
+        Theme.VOID.getColor() + "Voidal"
+    );
+
+    public static final ItemStack GUIDE_BASIC_CHEST = new CustomItemStack(
+        Material.CHEST,
+        Theme.DUNGEON.getColor() + "Dungeon Chest",
+        "&7Basic"
+    );
+
+    public static final ItemStack GUIDE_VIVACIOUS_CHEST = new CustomItemStack(
+        Material.CHEST,
+        Theme.DUNGEON.getColor() + "Dungeon Chest",
+        "&7Vivacious"
+    );
+
+    public static final ItemStack GUIDE_TENEBROUS_CHEST = new CustomItemStack(
+        Material.CHEST,
+        Theme.DUNGEON.getColor() + "Dungeon Chest",
+        "&7Tenebrous"
+    );
+
+    public static final ItemStack GUIDE_ANCIENT_CHEST = new CustomItemStack(
+        Material.CHEST,
+        Theme.DUNGEON.getColor() + "Dungeon Chest",
+        "&7Ancient"
+    );
+
+    public static final ItemStack GUIDE_NORMAL_FRACTURE = new CustomItemStack(
+        Material.WHITE_STAINED_GLASS_PANE,
+        Theme.DUNGEON.getColor() + "Normal Fracture"
+    );
+
+    public static final ItemStack GUIDE_ROCKY_FRACTURE = new CustomItemStack(
+        Material.LIGHT_GRAY_STAINED_GLASS_PANE,
+        Theme.DUST.getColor() + "Rocky Fracture"
+    );
+
+    public static final ItemStack ORGANIC_FRACTURE = new CustomItemStack(
+        Material.GREEN_STAINED_GLASS_PANE,
+        Theme.LIFE.getColor() + "Organic Fracture"
+    );
+
+    public static final ItemStack VOID_FRACTURE = new CustomItemStack(
+        Material.PURPLE_STAINED_GLASS_PANE,
+        Theme.VOID.getColor() + "Void Fracture"
     );
 
     public static final ItemStack RECIPE_REFLECTING = new CustomItemStack(
@@ -52,7 +128,23 @@ public class QDStacks {
         "&bLooting",
         "",
         "&7This item is obtained by looting",
-        "&7quantum dungeon chests"
+        "&7chests in dungeons"
+    );
+    
+    public static final ItemStack RECIPE_MENDING = new CustomItemStack(
+        Material.MOSSY_STONE_BRICKS,
+        "&bKilling",
+        "",
+        "&7This item is obtained by mending a",
+        "&7crack in a dungeon"
+    );
+    
+    public static final ItemStack RECIPE_BOOSTING = new CustomItemStack(
+        Material.MOSSY_STONE_BRICKS,
+        "&bLooting",
+        "",
+        "&7This item is obtained by boosting",
+        "&7a record in a Record Booster"
     );
 
     // ---- Materials & Tools ----
@@ -94,8 +186,16 @@ public class QDStacks {
     public static final SlimefunItemStack DUNGEON_PORTAL_FRAME = ThemedItemStack.of(
         Theme.DIMENSIONAL,
         "DUNGEON_PORTAL_FRAME",
-        Material.RESPAWN_ANCHOR,
+        Material.CRYING_OBSIDIAN,
         "Dungeon Portal Frame",
+        ""
+    );
+
+    public static final SlimefunItemStack DUNGEON_PORTAL_SWITCH = ThemedItemStack.of(
+        Theme.DIMENSIONAL,
+        "DUNGEON_PORTAL_SWITCH",
+        Material.RESPAWN_ANCHOR,
+        "Portal Switch",
         ""
     );
 
@@ -120,15 +220,31 @@ public class QDStacks {
     public static final SlimefunItemStack BASIC_DUNGEON_CATALYST = ThemedItemStack.of(
         Theme.CATALYST,
         "BASIC_DUNGEON_CATALYST",
-        Material.DIAMOND,
+        Material.VINE,
         "Basic Dungeon Catalyst",
+        ""
+    );
+
+    public static final SlimefunItemStack VIVACIOUS_DUNGEON_CATALYST = ThemedItemStack.of(
+        Theme.CATALYST,
+        "VIVACIOUS_DUNGEON_CATALYST",
+        Material.GLOW_BERRIES,
+        "Vivacious Dungeon Catalyst",
+        ""
+    );
+
+    public static final SlimefunItemStack TENEBROUS_DUNGEON_CATALYST = ThemedItemStack.of(
+        Theme.CATALYST,
+        "TENEBROUS_DUNGEON_CATALYST",
+        Material.ENDER_PEARL,
+        "Tenebrous Dungeon Catalyst",
         ""
     );
 
     public static final SlimefunItemStack ANCIENT_DUNGEON_CATALYST = ThemedItemStack.of(
         Theme.CATALYST,
         "ANCIENT_DUNGEON_CATALYST",
-        Material.ENDER_PEARL,
+        Material.SCULK_SENSOR,
         "Ancient Dungeon Catalyst",
         ""
     );
@@ -201,37 +317,53 @@ public class QDStacks {
         ""
     ).glisten();
 
-    public static final SlimefunItemStack ANCIENT_DUNGEON_TOKEN = ThemedItemStack.of(
+    public static final SlimefunItemStack VIVACIOUS_DUNGEON_TOKEN = ThemedItemStack.of(
         Theme.DUNGEON,
         "ANCIENT_DUNGEON_TOKEN",
-        Material.SUNFLOWER,
+        Material.FLOWERING_AZALEA,
         "Ancient Dungeon Token",
         ""
     ).glisten();
 
-    // ---- Shards ----
-
-    public static final SlimefunItemStack EFFERVESCENT_SHARD = ThemedItemStack.of(
-        Theme.LIFE,
-        "EFFERVESCENT_SHARD",
-        Material.GREEN_DYE,
-        "Effervescent Shard",
+    public static final SlimefunItemStack TENEBROUS_DUNGEON_TOKEN = ThemedItemStack.of(
+        Theme.DUNGEON,
+        "ANCIENT_DUNGEON_TOKEN",
+        Material.ENDER_EYE,
+        "Ancient Dungeon Token",
         ""
     ).glisten();
 
-    public static final SlimefunItemStack ENERVATED_SHARD = ThemedItemStack.of(
+    // public static final SlimefunItemStack ANCIENT_DUNGEON_TOKEN = ThemedItemStack.of(
+    //     Theme.DUNGEON,
+    //     "ANCIENT_DUNGEON_TOKEN",
+    //     Material.ECHO_SHARD,
+    //     "Ancient Dungeon Token",
+    //     ""
+    // ).glisten();
+
+    // ---- Dusts ----
+
+    public static final SlimefunItemStack EFFERVESCENT_DUST = ThemedItemStack.of(
+        Theme.LIFE,
+        "EFFERVESCENT_DUST",
+        Material.GLOWSTONE,
+        "Effervescent Dust",
+        ""
+    ).glisten();
+
+    public static final SlimefunItemStack ENERVATED_DUST = ThemedItemStack.of(
         Theme.VOID,
-        "ENERVATED_SHARD",
-        Material.BLACK_DYE,
-        "Enervated Shard",
+        "ENERVATED_DUST",
+        Material.GUNPOWDER,
+        "Enervated Dust",
         ""
     );
 
-    public static final SlimefunItemStack EFFLUVIANT_SHARD = ThemedItemStack.of(
+    public static final SlimefunItemStack EFFLUVIANT_DUST = ThemedItemStack.of(
         Theme.DUST,
-        "EFFLUVIANT_SHARD",
-        Material.LIGHT_GRAY_DYE,
-        "Effluviant Shard",
+        "EFFLUVIANT_DUST",
+        Material.REDSTONE,
+        "Effluviant Dust",
         ""
     );
 

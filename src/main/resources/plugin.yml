@@ -2,7 +2,7 @@ name: QuantumDungeons
 
 author: SchnTgaiSpock
 
-description: Adds infinite dungeons to Minecraft
+description: A Slimefun addon that adds infinite dungeons to Minecraft
 
 main: io.github.schntgaispock.quantumdungeons.QuantumDungeons
 
@@ -14,6 +14,9 @@ api-version: 1.14
 
 depend:
 - Slimefun
+
+soft-depend:
+- SlimeHUD
 
 commands:
   slimehud:

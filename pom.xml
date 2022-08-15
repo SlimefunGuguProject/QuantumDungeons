@@ -101,6 +101,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
+        <dependency>
+            <groupId>io.github.schntgaispock</groupId>
+            <artifactId>SlimeHUD</artifactId>
+            <version>b412bc1</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>io.github.mooy1</groupId>
@@ -133,6 +140,12 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>3.0.0</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency> 
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.3</version>
+          </dependency>
     </dependencies>
 </project>

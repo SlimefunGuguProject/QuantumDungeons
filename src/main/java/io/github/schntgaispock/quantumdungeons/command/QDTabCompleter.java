@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 /**
- * Tab completion for the '/slimehud' command
+ * Tab completion for the '/quantumdungeons' command
  */
 public class QDTabCompleter implements TabCompleter {
 

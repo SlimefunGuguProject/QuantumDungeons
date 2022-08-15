@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import io.github.schntgaispock.quantumdungeons.QuantumDungeons;
 
 /**
- * Functionality for the '/slimehud'command
+ * Functionality for the '/quantumdungeons' command
  */
 public class QDCommandExecutor implements CommandExecutor {
 
