@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.command;
+package io.github.schntgaispock.quantumdungeons.core.command;
 
 import io.github.schntgaispock.quantumdungeons.QuantumDungeons;
 

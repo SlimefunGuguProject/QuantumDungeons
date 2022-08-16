@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import io.github.schntgaispock.quantumdungeons.core.slimefun.QDBlockStorage;
-import io.github.schntgaispock.quantumdungeons.theme.QDEffects;
+import io.github.schntgaispock.quantumdungeons.util.QDEffects;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;

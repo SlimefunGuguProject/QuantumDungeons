@@ -1,11 +1,11 @@
-package io.github.schntgaispock.quantumdungeons.theme;
+package io.github.schntgaispock.quantumdungeons.util;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.schntgaispock.quantumdungeons.theme.QDTheme.Theme;
+import io.github.schntgaispock.quantumdungeons.util.QDTheme.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 
 public class ThemedItemStack extends SlimefunItemStack {

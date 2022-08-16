@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.command;
+package io.github.schntgaispock.quantumdungeons.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -4,8 +4,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.schntgaispock.quantumdungeons.theme.ThemedItemStack;
-import io.github.schntgaispock.quantumdungeons.theme.QDTheme.Theme;
+import io.github.schntgaispock.quantumdungeons.util.ThemedItemStack;
+import io.github.schntgaispock.quantumdungeons.util.QDTheme.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import lombok.experimental.UtilityClass;

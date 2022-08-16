@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.command;
+package io.github.schntgaispock.quantumdungeons.core.command;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.theme;
+package io.github.schntgaispock.quantumdungeons.util;
 
 
 import lombok.Getter;
