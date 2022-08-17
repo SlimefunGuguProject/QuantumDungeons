@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.core.slimefun.items.dungeon;
+package io.github.schntgaispock.quantumdungeons.core.slimefun.items.materials;
 
 
 import java.util.List;

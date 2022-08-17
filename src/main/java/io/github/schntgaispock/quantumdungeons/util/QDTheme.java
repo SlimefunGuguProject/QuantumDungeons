@@ -8,14 +8,14 @@ import net.md_5.bungee.api.ChatColor;
 @UtilityClass
 public final class QDTheme {
     public static enum Theme {
-        DUNGEON("#5a0d6b", "#6b6b6b"),
-        DIMENSIONAL("#5a0d6b", "#6b6b6b"),
-        CATALYST("#32baac", "#6b6b6b"),
-        RECORD("#b5b510", "#6b6b6b"),
+        DUNGEON("#5a0d6b"),
+        DIMENSIONAL("#cc21b8"),
+        CATALYST("#c4ff0e"),
+        RECORD("#fcfc11"),
 
-        VOID("#b5b510", "#6b6b6b"),
-        LIFE("#b5b510", "#6b6b6b"),
-        DUST("#b5b510", "#6b6b6b");
+        VOID("#706674"),
+        LIFE("#34f20e"),
+        DUST("#d8d8dd");
 
         private @Getter ChatColor color;
         private @Getter ChatColor loreColor;
@@ -23,6 +23,10 @@ public final class QDTheme {
         Theme(String color, String loreColor) {
             this.color = ChatColor.of(color);
             this.loreColor = ChatColor.of(loreColor);
+        }
+
+        Theme(String color) {
+            this(color, "&7");
         }
     }
 }

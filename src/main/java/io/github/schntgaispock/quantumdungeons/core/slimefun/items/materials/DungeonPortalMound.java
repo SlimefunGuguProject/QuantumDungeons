@@ -1,4 +1,4 @@
-package io.github.schntgaispock.quantumdungeons.core.slimefun.items.dungeon;
+package io.github.schntgaispock.quantumdungeons.core.slimefun.items.materials;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

@@ -55,6 +55,12 @@ public class QDStacks {
         Theme.VOID.getColor() + "Voidal"
     );
 
+    public static final ItemStack GUIDE_ANY_CHEST = new CustomItemStack(
+        Material.CHEST,
+        Theme.DUNGEON.getColor() + "Dungeon Chest",
+        "&7Any"
+    );
+
     public static final ItemStack GUIDE_BASIC_CHEST = new CustomItemStack(
         Material.CHEST,
         Theme.DUNGEON.getColor() + "Dungeon Chest",
@@ -89,12 +95,12 @@ public class QDStacks {
         Theme.DUST.getColor() + "Rocky Fracture"
     );
 
-    public static final ItemStack ORGANIC_FRACTURE = new CustomItemStack(
+    public static final ItemStack GUIDE_ORGANIC_FRACTURE = new CustomItemStack(
         Material.GREEN_STAINED_GLASS_PANE,
         Theme.LIFE.getColor() + "Organic Fracture"
     );
 
-    public static final ItemStack VOID_FRACTURE = new CustomItemStack(
+    public static final ItemStack GUIDE_VOID_FRACTURE = new CustomItemStack(
         Material.PURPLE_STAINED_GLASS_PANE,
         Theme.VOID.getColor() + "Void Fracture"
     );
@@ -157,6 +163,15 @@ public class QDStacks {
         ""
     );
 
+    public static final SlimefunItemStack RECONSTRUCTED_REALITY_SHARD = ThemedItemStack.of(
+        Theme.DIMENSIONAL,
+        "RECONSTRUCTED_REALITY_SHARD",
+        Material.PRISMARINE_SHARD,
+        "Reconstructed Reality Shard",
+        ""
+    )
+    .glisten();
+
     public static final SlimefunItemStack BINDING_GLASS = ThemedItemStack.of(
         Theme.DIMENSIONAL,
         "BINDING_GLASS",
@@ -173,15 +188,6 @@ public class QDStacks {
         "Mending Glass",
         "Can mend fractures in reality itself"
     );
-
-    public static final SlimefunItemStack RECONSTRUCTED_REALITY_SHARD = ThemedItemStack.of(
-        Theme.DIMENSIONAL,
-        "RECONSTRUCTED_REALITY_SHARD",
-        Material.PRISMARINE_SHARD,
-        "Reconstructed Reality Shard",
-        ""
-    )
-    .glisten();
 
     public static final SlimefunItemStack DUNGEON_PORTAL_FRAME = ThemedItemStack.of(
         Theme.DIMENSIONAL,
@@ -209,7 +215,7 @@ public class QDStacks {
         ""
     );
 
-    public static final SlimefunItemStack BLANK_CATALYST = ThemedItemStack.of(
+    public static final SlimefunItemStack BLANK_DUNGEON_CATALYST = ThemedItemStack.of(
         Theme.CATALYST,
         "BLANK_CATALYST",
         Material.GRAY_DYE,
@@ -275,6 +281,14 @@ public class QDStacks {
         ""
     ).addFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+    public static final SlimefunItemStack RECORD_OF_VALOR_BOOSTED = ThemedItemStack.of(
+        Theme.RECORD,
+        "RECORD_OF_VALOR_BOOSTED",
+        Material.MUSIC_DISC_13,
+        "Record of Valor",
+        ""
+    ).addFlags(ItemFlag.HIDE_ATTRIBUTES).glisten();
+
     public static final SlimefunItemStack RECORD_OF_AEGIS = ThemedItemStack.of(
         Theme.RECORD,
         "RECORD_OF_AEGIS",
@@ -282,6 +296,14 @@ public class QDStacks {
         "Record of Aegis",
         ""
     ).addFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+    public static final SlimefunItemStack RECORD_OF_AEGIS_BOOSTED = ThemedItemStack.of(
+        Theme.RECORD,
+        "RECORD_OF_AEGIS_BOOSTED",
+        Material.MUSIC_DISC_WAIT,
+        "Record of Aegis",
+        ""
+    ).addFlags(ItemFlag.HIDE_ATTRIBUTES).glisten();
 
     public static final SlimefunItemStack RECORD_OF_ORDER = ThemedItemStack.of(
         Theme.RECORD,
@@ -291,6 +313,14 @@ public class QDStacks {
         ""
     ).addFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+    public static final SlimefunItemStack RECORD_OF_ORDER_BOOSTED = ThemedItemStack.of(
+        Theme.RECORD,
+        "RECORD_OF_ORDER_BOOSTED",
+        Material.MUSIC_DISC_FAR,
+        "Record of Order",
+        ""
+    ).addFlags(ItemFlag.HIDE_ATTRIBUTES).glisten();
+
     public static final SlimefunItemStack RECORD_OF_POWER = ThemedItemStack.of(
         Theme.RECORD,
         "RECORD_OF_POWER",
@@ -299,6 +329,14 @@ public class QDStacks {
         ""
     ).addFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+    public static final SlimefunItemStack RECORD_OF_POWER_BOOSTED = ThemedItemStack.of(
+        Theme.RECORD,
+        "RECORD_OF_POWER_BOOSTED",
+        Material.MUSIC_DISC_CHIRP,
+        "Record of Power",
+        ""
+    ).addFlags(ItemFlag.HIDE_ATTRIBUTES).glisten();
+
     public static final SlimefunItemStack RECORD_OF_HASTE = ThemedItemStack.of(
         Theme.RECORD,
         "RECORD_OF_HASTE",
@@ -306,6 +344,14 @@ public class QDStacks {
         "Record of Haste",
         ""
     ).addFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+    public static final SlimefunItemStack RECORD_OF_HASTE_BOOSTED = ThemedItemStack.of(
+        Theme.RECORD,
+        "RECORD_OF_HASTE_BOOSTED",
+        Material.MUSIC_DISC_STRAD,
+        "Record of Haste",
+        ""
+    ).addFlags(ItemFlag.HIDE_ATTRIBUTES).glisten();
 
     // ---- Tokens ----
 
@@ -333,13 +379,13 @@ public class QDStacks {
         ""
     ).glisten();
 
-    // public static final SlimefunItemStack ANCIENT_DUNGEON_TOKEN = ThemedItemStack.of(
-    //     Theme.DUNGEON,
-    //     "ANCIENT_DUNGEON_TOKEN",
-    //     Material.ECHO_SHARD,
-    //     "Ancient Dungeon Token",
-    //     ""
-    // ).glisten();
+    public static final SlimefunItemStack ANCIENT_DUNGEON_TOKEN = ThemedItemStack.of(
+        Theme.DUNGEON,
+        "ANCIENT_DUNGEON_TOKEN",
+        Material.ECHO_SHARD,
+        "Ancient Dungeon Token",
+        ""
+    ).glisten();
 
     // ---- Dusts ----
 

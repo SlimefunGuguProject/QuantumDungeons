@@ -1,6 +1,6 @@
 package io.github.schntgaispock.quantumdungeons.integration;
 
-import io.github.schntgaispock.quantumdungeons.core.slimefun.items.dungeon.DungeonPortalMound;
+import io.github.schntgaispock.quantumdungeons.core.slimefun.items.materials.DungeonPortalMound;
 import io.github.schntgaispock.slimehud.SlimeHUD;
 import io.github.schntgaispock.slimehud.waila.HudController;
 import io.github.schntgaispock.slimehud.waila.HudRequest;
