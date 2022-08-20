@@ -43,11 +43,6 @@ public class QDStacks {
         Theme.DUNGEON.getColor() + "Dungeon Items"
     );
     
-    public static final ItemStack GUIDE_ITEM_HIDDEN = new CustomItemStack(
-        Material.BARRIER,
-        "This should never be shown"
-    );
-    
     public static final ItemStack GUIDE_ITEM_MAIN = new CustomItemStack(
         Material.CRACKED_STONE_BRICKS,
         Theme.DUNGEON.getColor() + "Quantum Dungeons"
@@ -129,6 +124,13 @@ public class QDStacks {
         "&7chests in dungeons"
     );
     
+    public static final ItemStack RECIPE_KILLING = new CustomItemStack(
+        Material.CHEST,
+        "&bMob Drop",
+        "&7This item is obtained by killing",
+        "&7the specified mob"
+    );
+    
     public static final ItemStack RECIPE_MENDING = new CustomItemStack(
         Material.SPYGLASS,
         "&bMending",
@@ -190,7 +192,7 @@ public class QDStacks {
 
     public static final SlimefunItemStack DUNGEON_PORTAL_MOUND = ThemedItemStack.of(
         Theme.DUNGEON,
-        "DUNGEON_PORTAL_SWITCH",
+        "DUNGEON_PORTAL_MOUND",
         Material.RESPAWN_ANCHOR,
         "Dungeon Portal Mound",
         "Requires four Dungeon Portal",
@@ -210,7 +212,7 @@ public class QDStacks {
 
     public static final SlimefunItemStack BLANK_DUNGEON_CATALYST = ThemedItemStack.of(
         Theme.CATALYST,
-        "BLANK_CATALYST",
+        "BLANK_DUNGEON_CATALYST",
         Material.GRAY_DYE,
         "Blank Catalyst",
         "Does nothing on its own..."

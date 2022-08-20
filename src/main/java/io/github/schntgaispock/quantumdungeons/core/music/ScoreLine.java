@@ -77,8 +77,8 @@ public class ScoreLine implements Cloneable {
         return this;
     }
 
-    public void play(Player player) {
-        
+    public void play(Player player, int position) {
+        notes.getOrDefault(position, REST).playSound(player, instrument);
     }
 
     public ScoreLine clone() {

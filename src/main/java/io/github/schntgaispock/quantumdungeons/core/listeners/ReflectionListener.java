@@ -1,6 +1,7 @@
 package io.github.schntgaispock.quantumdungeons.core.listeners;
 
-import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,15 +13,19 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 public class ReflectionListener implements Listener {
     
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler
     public void onReflect(PlayerInteractEntityEvent e) {
         if (!(e.getRightClicked() instanceof ItemFrame)) return;
-        if (SlimefunItem.getByItem(e.getPlayer().getInventory().getItemInMainHand()) == null) return;
-
         ItemFrame frame = (ItemFrame) e.getRightClicked();
-        Location reflectionLocation = frame.getLocation().add(frame.getAttachedFace().getDirection());
 
-        if (!BlockStorage.check(reflectionLocation, "BINDING_GLASS")) return;
+        SlimefunItem item;
+        if ((item = SlimefunItem.getByItem(e.getPlayer().getInventory().getItemInMainHand())) == null) return;
+        if (!item.getId().equals("FRACTURED_REALITY_SHARD")) return;
+        if (frame.getItem() != null && frame.getItem().getType() != Material.AIR) return;
+
+        Block reflectionBlock = frame.getLocation().add(frame.getAttachedFace().getOppositeFace().getDirection()).getBlock();
+
+        if (!BlockStorage.check(reflectionBlock, "BINDING_GLASS")) return;
 
         QDEffects.bindFracturedRealityShard(frame);
     }

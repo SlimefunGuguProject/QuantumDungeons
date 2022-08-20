@@ -14,6 +14,7 @@ public class QDRecipes {
 
         public static final RecipeType REFLECTING = new QDRecipeType("reflecting", QDStacks.RECIPE_REFLECTING);
         public static final RecipeType MOULDING = new QDRecipeType("moulding", QDStacks.RECIPE_MOULDING);
+        public static final RecipeType KILLING = new QDRecipeType("mending", QDStacks.RECIPE_KILLING);
         public static final RecipeType LOOTING = new QDRecipeType("looting", QDStacks.RECIPE_LOOTING);
         public static final RecipeType MENDING = new QDRecipeType("mending", QDStacks.RECIPE_MENDING);
         public static final RecipeType BOOSTING = new QDRecipeType("boosting", QDStacks.RECIPE_BOOSTING);

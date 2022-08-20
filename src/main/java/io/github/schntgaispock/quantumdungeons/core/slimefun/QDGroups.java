@@ -12,8 +12,7 @@ public class QDGroups {
     public static final SubGroup CATALYSTS = new SubGroup("catalysts", QDStacks.GUIDE_ITEM_CATALYSTS);
     public static final SubGroup RECORDS = new SubGroup("records", QDStacks.GUIDE_ITEM_RECORDS);
     public static final SubGroup DUNGEON = new SubGroup("dungeon", QDStacks.GUIDE_ITEM_DUNGEON);
-    public static final SubGroup HIDDEN = new SubGroup("hidden", QDStacks.GUIDE_ITEM_HIDDEN);
     public static final MultiGroup MAIN = new MultiGroup("main", QDStacks.GUIDE_ITEM_MAIN,
-        MATERIALS, TOOLS, CATALYSTS, RECORDS, DUNGEON, HIDDEN);
+        MATERIALS, TOOLS, CATALYSTS, RECORDS, DUNGEON);
 
 }

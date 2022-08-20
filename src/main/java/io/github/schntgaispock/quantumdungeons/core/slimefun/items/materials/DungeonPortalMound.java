@@ -4,13 +4,17 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.RespawnAnchor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import io.github.schntgaispock.quantumdungeons.QuantumDungeons;
 import io.github.schntgaispock.quantumdungeons.core.slimefun.QDBlockStorage;
+import io.github.schntgaispock.quantumdungeons.core.timer.Cooldown;
 import io.github.schntgaispock.quantumdungeons.util.QDEffects;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -25,10 +29,10 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 public class DungeonPortalMound extends SlimefunItem {
 
     private static final @Getter Vector[] searchLocations = new Vector[] {
-        new Vector(2, 0, 0),
-        new Vector(0, 0, 2),
-        new Vector(-2, 0, 0),
-        new Vector(0, 0, -2)
+        new Vector(3, 0, 0),
+        new Vector(0, 0, 3),
+        new Vector(-3, 0, 0),
+        new Vector(0, 0, -3)
     };
 
     public DungeonPortalMound(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -42,7 +46,7 @@ public class DungeonPortalMound extends SlimefunItem {
         addItemHandler(new BlockPlaceHandler(false) {
 
             @Override
-            @EventHandler(ignoreCancelled = true)
+            @EventHandler
             @ParametersAreNonnullByDefault
             public void onPlayerPlace(BlockPlaceEvent e) {
                 Block block = e.getBlock();
@@ -56,13 +60,16 @@ public class DungeonPortalMound extends SlimefunItem {
                 }
 
                 QDBlockStorage.set(block, "connected_frames", connected);
+                updateLocation(block.getLocation());
             }
         });
     }
 
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW)
     @ParametersAreNonnullByDefault
     private void onRightClick(PlayerRightClickEvent e) {
+        e.cancel();
+
         if (e.getSlimefunBlock().isEmpty())
             return;
         if (e.getSlimefunItem().isEmpty())
@@ -76,14 +83,17 @@ public class DungeonPortalMound extends SlimefunItem {
         String id;
         String dungeonType;
         switch (id = slimefunItem.getId()) {
-            case "BASIC_DUNGEON_CATALYST",
-                    "VIVACIOUS_DUNGEON_CATALYST",
-                    "TENEBROUS_DUNGEON_CATALYST",
-                    "ANCIENT_DUNGEON_CATALYST":
+            case 
+                "BASIC_DUNGEON_CATALYST",
+                "VIVACIOUS_DUNGEON_CATALYST",
+                "TENEBROUS_DUNGEON_CATALYST",
+                "ANCIENT_DUNGEON_CATALYST":
+                
                 dungeonType = id.split("_")[0].toLowerCase();
                 break;
 
             default:
+                p.sendMessage("Unknown portal catalyst!");
                 return;
         }
 
@@ -95,15 +105,43 @@ public class DungeonPortalMound extends SlimefunItem {
 
         // TODO: Check 7x7 space is empty
 
-        // TODO: Check personal cooldowns
+        Cooldown cooldown;
+        if (
+            !(cooldown = QuantumDungeons
+                .getCooldownManager()
+                .getCooldowns()
+                .get("dungeon"))
+                .check(p.getUniqueId())
+        ) {
+            p.sendMessage("Dungeon creation cooldown: " + cooldown.elapsed(p.getUniqueId()) / 1000*60 + "s");
+            return;
+        }
 
         // TODO: Check if dungeon world is busy
 
         // TODO: Generate Dungeon
-        p.sendMessage("Creating a " + dungeonType + " dungeon...");
+        p.sendMessage("Creating a(n) " + dungeonType + " dungeon...");
+
         item.setAmount(item.getAmount() - 1);
 
         QDEffects.catalysePortal(dungeonType, block.getLocation());
+    }
+
+
+    public static void updateLocation(Location l) {
+        // Assume the location has already been checked for correctness
+        RespawnAnchor mound = (RespawnAnchor) l.getBlock().getBlockData();
+
+        mound.setCharges(
+            Math.max(
+                Math.min(
+                    QDBlockStorage.getInteger(l, "connected_frames"),
+                    4), 
+                    0
+            )
+        );   
+        
+        l.getBlock().setBlockData(mound);
     }
 
 }

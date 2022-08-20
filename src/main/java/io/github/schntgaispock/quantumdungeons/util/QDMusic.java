@@ -15,20 +15,20 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class QDMusic {
 
-    private static final Score RECORD_OF_VALOR = new Score(3);
-    private static final Score RECORD_OF_VALOR_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_VALOR = new Score(3, 24);
+    private static final Score RECORD_OF_VALOR_BOOSTED = new Score(3, 24);
     
-    private static final Score RECORD_OF_AEGIS = new Score(3);
-    private static final Score RECORD_OF_AEGIS_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_AEGIS = new Score(3, 16);
+    private static final Score RECORD_OF_AEGIS_BOOSTED = new Score(3, 16);
     
-    private static final Score RECORD_OF_ORDER = new Score(3);
-    private static final Score RECORD_OF_ORDER_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_ORDER = new Score(3, 24);
+    private static final Score RECORD_OF_ORDER_BOOSTED = new Score(3, 24);
     
-    private static final Score RECORD_OF_POWER = new Score(3);
-    private static final Score RECORD_OF_POWER_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_POWER = new Score(3, 24);
+    private static final Score RECORD_OF_POWER_BOOSTED = new Score(3, 24);
     
-    private static final Score RECORD_OF_HASTE = new Score(2);
-    private static final Score RECORD_OF_HASTE_BOOSTED = new Score(2);
+    private static final Score RECORD_OF_HASTE = new Score(2, 32);
+    private static final Score RECORD_OF_HASTE_BOOSTED = new Score(2, 32);
 
     public static final Map<String, Score> SCORES = new HashMap<>();
 
@@ -60,7 +60,7 @@ public class QDMusic {
 
         RECORD_OF_VALOR_BOOSTED.newLine("melody1", RECORD_OF_VALOR.copyOf("melody"));
         RECORD_OF_VALOR_BOOSTED.newLine("melody2", RECORD_OF_VALOR.transpose("melody", Sound.BLOCK_NOTE_BLOCK_GUITAR));
-        RECORD_OF_VALOR_BOOSTED.newLine("bass", RECORD_OF_VALOR.copyOf("melbassody"));
+        RECORD_OF_VALOR_BOOSTED.newLine("bass", RECORD_OF_VALOR.copyOf("bass"));
 
         RECORD_OF_AEGIS
             .newLine("bass1", Sound.BLOCK_NOTE_BLOCK_GUITAR)
@@ -90,21 +90,21 @@ public class QDMusic {
             .add(2, Pitch.G_0);
 
             
-    RECORD_OF_AEGIS_BOOSTED.newLine("bass1", RECORD_OF_AEGIS.copyOf("bass1"));
-    RECORD_OF_AEGIS_BOOSTED
-        .newLine("bass2", Sound.BLOCK_NOTE_BLOCK_BASS)
-        .add(2, Pitch.G_0, Pitch.C_0)
-        .add(1, Pitch.G_0, Pitch.C_0)
-        .add(1, Pitch.G_0, Pitch.C_0)
-        .add(1, Pitch.G_0, Pitch.B_0)
-        .add(1, Pitch.B_0)
-        .add(1, Pitch.G_0, Pitch.B_0)
-        .add(1, Pitch.G_0, Pitch.B_0)
-        .add(2, Pitch.G_0, Pitch.C_0)
-        .add(1, Pitch.G_0, Pitch.C_0)
-        .add(1, Pitch.G_0, Pitch.C_0)
-        .add(2, Pitch.G_0, Pitch.B_0)
-        .add(2, Pitch.G_0, Pitch.B_0);
+        RECORD_OF_AEGIS_BOOSTED.newLine("bass1", RECORD_OF_AEGIS.copyOf("bass1"));
+        RECORD_OF_AEGIS_BOOSTED
+            .newLine("bass2", Sound.BLOCK_NOTE_BLOCK_BASS)
+            .add(2, Pitch.G_0, Pitch.C_0)
+            .add(1, Pitch.G_0, Pitch.C_0)
+            .add(1, Pitch.G_0, Pitch.C_0)
+            .add(1, Pitch.G_0, Pitch.B_0)
+            .add(1, Pitch.B_0)
+            .add(1, Pitch.G_0, Pitch.B_0)
+            .add(1, Pitch.G_0, Pitch.B_0)
+            .add(2, Pitch.G_0, Pitch.C_0)
+            .add(1, Pitch.G_0, Pitch.C_0)
+            .add(1, Pitch.G_0, Pitch.C_0)
+            .add(2, Pitch.G_0, Pitch.B_0)
+            .add(2, Pitch.G_0, Pitch.B_0);
 
         RECORD_OF_ORDER
             .newLine("melody", Sound.BLOCK_NOTE_BLOCK_HARP)
@@ -139,7 +139,7 @@ public class QDMusic {
         RECORD_OF_ORDER_BOOSTED.newLine("melody", RECORD_OF_ORDER.copyOf("melody"));
         RECORD_OF_ORDER_BOOSTED.newLine("bass1", RECORD_OF_ORDER.copyOf("bass"));
         RECORD_OF_ORDER_BOOSTED
-            .newLine("bass2", Sound.BLOCK_NOTE_BLOCK_GUITAR)
+            .newLine("bass2", 0.5f, Sound.BLOCK_NOTE_BLOCK_GUITAR)
             .add(2, Pitch.C_0)
             .add(3, Pitch.G_1, Pitch.A_SHARP_1)
             .add(1, Pitch.G_1, Pitch.A_SHARP_1)
@@ -239,12 +239,16 @@ public class QDMusic {
         SCORES.put("RECORD_OF_VALOR", RECORD_OF_VALOR);
         SCORES.put("RECORD_OF_VALOR_BOOSTED", RECORD_OF_VALOR_BOOSTED);
         SCORES.put("RECORD_OF_AEGIS", RECORD_OF_AEGIS);
-        SCORES.put("RECORD_OF_ORDER_BOOSTED", RECORD_OF_AEGIS_BOOSTED);
-        SCORES.put("RECORD_OF_AEGIS", RECORD_OF_ORDER);
+        SCORES.put("RECORD_OF_AEGIS_BOOSTED", RECORD_OF_AEGIS_BOOSTED);
+        SCORES.put("RECORD_OF_ORDER", RECORD_OF_ORDER);
         SCORES.put("RECORD_OF_ORDER_BOOSTED", RECORD_OF_ORDER_BOOSTED);
         SCORES.put("RECORD_OF_POWER", RECORD_OF_POWER);
         SCORES.put("RECORD_OF_POWER_BOOSTED", RECORD_OF_POWER_BOOSTED);
         SCORES.put("RECORD_OF_HASTE", RECORD_OF_HASTE);
         SCORES.put("RECORD_OF_HASTE_BOOSTED", RECORD_OF_HASTE_BOOSTED);
+    }
+
+    public static float noteToPitch(int notePitch) {
+        return (float) Math.pow(2, (notePitch - 12) / 12.0);
     }
 }

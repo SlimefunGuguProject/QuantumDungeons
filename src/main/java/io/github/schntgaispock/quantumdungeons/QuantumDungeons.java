@@ -4,6 +4,7 @@ package io.github.schntgaispock.quantumdungeons;
 import javax.annotation.Nonnull;
 
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 
 import io.github.mooy1.infinitylib.core.AbstractAddon;
@@ -11,6 +12,7 @@ import io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.QDSchemat
 import io.github.schntgaispock.quantumdungeons.core.setup.ListenerSetup;
 import io.github.schntgaispock.quantumdungeons.core.setup.QDItemSetup;
 import io.github.schntgaispock.quantumdungeons.core.timer.CooldownManager;
+import io.github.schntgaispock.quantumdungeons.integration.SlimeHUDSetup;
 import lombok.Getter;
 
 public class QuantumDungeons extends AbstractAddon {
@@ -44,6 +46,17 @@ public class QuantumDungeons extends AbstractAddon {
 
         QDItemSetup.setup();
         ListenerSetup.setup();
+
+        if (getInstance().getServer().getPluginManager().isPluginEnabled("SlimeHUD")) {
+            try {
+                getLogger().info("SlimeHUD was found on this server!");
+                getLogger().info("Setting up QuantumDungeons for SlimeHUD...");
+                SlimeHUDSetup.setup();
+            } catch (NoClassDefFoundError e) {
+                getLogger().warning("This server is using an old version of SlimeHUD that is incompatitable with QuantumDungeons.");
+                getLogger().warning("Please update SlimeHUD to version 1.2.0 or higher!");
+            }
+        }
     }
 
     @Override
@@ -54,5 +67,9 @@ public class QuantumDungeons extends AbstractAddon {
 
     public static NamespacedKey newNamespacedKey(@Nonnull String name) {
         return new NamespacedKey(QuantumDungeons.getInstance(), name);
+    }
+
+    public static int scheduleSyncDelayedTask(Runnable runnable, long delay) {
+        return Bukkit.getScheduler().scheduleSyncDelayedTask(getInstance(), runnable, delay);
     }
 }

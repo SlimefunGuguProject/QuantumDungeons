@@ -15,7 +15,7 @@ api-version: 1.14
 depend:
 - Slimefun
 
-soft-depend:
+softdepend:
 - SlimeHUD
 
 commands:

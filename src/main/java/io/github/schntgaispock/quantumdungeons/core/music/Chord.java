@@ -1,7 +1,9 @@
 package io.github.schntgaispock.quantumdungeons.core.music;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -10,7 +12,7 @@ import lombok.Getter;
 
 public class Chord extends ScoreComponent {
 
-    private @Getter Set<Note> notes;
+    private @Getter Set<Note> notes = new HashSet<>();
 
     public Chord(float volume, Vector displacement, Pitch[] pitches) {
         for (Pitch pitch : pitches) {
@@ -19,9 +21,9 @@ public class Chord extends ScoreComponent {
     }
 
     @Override
-    public void playSound(Player player) {
+    public void playSound(Player player, Sound instrument) {
         for (Note note : notes) {
-            note.playSound(player);
+            note.playSound(player, instrument);
         }
     }
     

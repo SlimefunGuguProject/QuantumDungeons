@@ -12,7 +12,6 @@ public class VoidWorldGenerator extends ChunkGenerator {
 
     @Override
     public boolean canSpawn(World world, int x, int z) {
-        // TODO Auto-generated method stub
         return super.canSpawn(world, x, z);
     }
 

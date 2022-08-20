@@ -1,5 +1,6 @@
 package io.github.schntgaispock.quantumdungeons.integration;
 
+import io.github.schntgaispock.quantumdungeons.core.slimefun.QDBlockStorage;
 import io.github.schntgaispock.quantumdungeons.core.slimefun.items.materials.DungeonPortalMound;
 import io.github.schntgaispock.slimehud.SlimeHUD;
 import io.github.schntgaispock.slimehud.waila.HudController;
@@ -15,7 +16,7 @@ public class SlimeHUDSetup {
         hc.registerCustomHandler(
             DungeonPortalMound.class,
             (HudRequest request) -> {
-                return "WIP";
+                return "&7| Connected frames: " + QDBlockStorage.getShort(request.getLocation(), "connected_frames");
             }
         );
     }

@@ -1,22 +1,27 @@
 package io.github.schntgaispock.quantumdungeons.core.music;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import io.github.schntgaispock.quantumdungeons.QuantumDungeons;
 import lombok.Getter;
 
 @Getter 
 public class Score {
     
-    private Map<String, ScoreLine> score;
+    private Map<String, ScoreLine> score = new HashMap<String, ScoreLine>();
     private int tickRate;
+    private int totalBeats;
 
-    public Score(int tickRate) {
-        super();
+    public Score(int tickRate, int totalBeats) {
+        this.tickRate = tickRate;
+        this.totalBeats = totalBeats;
     }
 
     public ScoreLine newLine(String key, float defaultVolume, Vector defaltDisplacement, Sound instrument) {
@@ -48,7 +53,25 @@ public class Score {
     }
 
     public void play(Player player) {
-        
+        BukkitRunnable playback = new BukkitRunnable() {
+
+            int beatsElapsed = 0;
+
+            @Override
+            public void run() {
+
+                for (ScoreLine line : score.values()) {
+                    line.play(player, beatsElapsed);
+                }
+
+                if (beatsElapsed++ > totalBeats) {
+                    cancel();
+                }
+            }
+            
+        };
+
+        playback.runTaskTimer(QuantumDungeons.getInstance(), 0, tickRate);
     }
 
 }

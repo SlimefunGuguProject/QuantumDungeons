@@ -26,10 +26,10 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 public class DungeonPortalFrame extends SlimefunItem {
 
     private static final @Getter Vector[] searchLocations = new Vector[] {
-            new Vector(2, 0, 0),
-            new Vector(0, 0, 2),
-            new Vector(-2, 0, 0),
-            new Vector(0, 0, -2)
+            new Vector(3, 0, 0),
+            new Vector(0, 0, 3),
+            new Vector(-3, 0, 0),
+            new Vector(0, 0, -3)
     };
 
     public DungeonPortalFrame(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -41,7 +41,7 @@ public class DungeonPortalFrame extends SlimefunItem {
         addItemHandler(new BlockPlaceHandler(false) {
 
             @Override
-            @EventHandler(ignoreCancelled = true)
+            @EventHandler
             @ParametersAreNonnullByDefault
             public void onPlayerPlace(BlockPlaceEvent e) {
                 Block block = e.getBlock();
@@ -52,9 +52,9 @@ public class DungeonPortalFrame extends SlimefunItem {
                     if (!BlockStorage.check(newLocation, "DUNGEON_PORTAL_MOUND"))
                         continue;
 
-                    short connectedFrames = QDBlockStorage.getShort(block, "connected_frames");
+                    short connectedFrames = QDBlockStorage.getShort(newLocation, "connected_frames");
                     QDBlockStorage.set(newLocation, "connected_frames", connectedFrames + 1);
-
+                    DungeonPortalMound.updateLocation(newLocation);
                 }
             }
         });
@@ -62,7 +62,7 @@ public class DungeonPortalFrame extends SlimefunItem {
         addItemHandler(new BlockBreakHandler(false, false) {
 
             @Override
-            @EventHandler(ignoreCancelled = true)
+            @EventHandler
             @ParametersAreNonnullByDefault
             public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
                 Block block = e.getBlock();
@@ -73,9 +73,9 @@ public class DungeonPortalFrame extends SlimefunItem {
                     if (!BlockStorage.check(newLocation, "DUNGEON_PORTAL_MOUND"))
                         continue;
 
-                    short connectedFrames = QDBlockStorage.getShort(block, "connected_frames");
+                    short connectedFrames = QDBlockStorage.getShort(newLocation, "connected_frames");
                     QDBlockStorage.set(newLocation, "connected_frames", connectedFrames - 1);
-
+                    DungeonPortalMound.updateLocation(newLocation);
                 }
             }
         });

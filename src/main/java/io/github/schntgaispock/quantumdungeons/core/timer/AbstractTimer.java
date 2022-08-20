@@ -33,6 +33,10 @@ public abstract class AbstractTimer {
         return System.currentTimeMillis() - startTimes.getOrDefault(uuid, 0L) >= durations.getOrDefault(uuid, defaultTicks);
     }
 
+    public long elapsed(UUID uuid) {
+        return System.currentTimeMillis() - startTimes.getOrDefault(uuid, 0L);
+    }
+
     public abstract Runnable onTimerComplete(UUID uuid);
     
 }

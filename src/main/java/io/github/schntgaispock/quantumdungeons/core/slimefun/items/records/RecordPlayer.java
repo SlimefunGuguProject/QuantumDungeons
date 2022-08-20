@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
+import io.github.schntgaispock.quantumdungeons.util.QDMusic;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -40,6 +41,8 @@ public class RecordPlayer extends SlimefunItem {
                 for (PotionEffect effect : record.getBuffs()) {
                     p.addPotionEffect(effect);
                 }
+
+                QDMusic.SCORES.get(item.getId()).play(p);
             }
         });
     }
