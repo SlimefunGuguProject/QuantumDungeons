@@ -46,8 +46,8 @@ public class RecordBooster extends AContainer implements RecipeDisplayItem {
 
     @Override
     public void register(SlimefunAddon addon) {
-        setEnergyConsumption(1024);
         setCapacity(8192);
+        setEnergyConsumption(1024);
         setProcessingSpeed(1);
 
         recipes.add(QDRecipes.machineSingle(5*60, QDStacks.RECORD_OF_VALOR, QDStacks.RECORD_OF_VALOR_BOOSTED));

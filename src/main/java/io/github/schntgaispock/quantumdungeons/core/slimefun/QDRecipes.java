@@ -12,7 +12,6 @@ public class QDRecipes {
 
     public static class QDRecipeType extends RecipeType {
 
-        public static final RecipeType KILLING = new QDRecipeType("killing", QDStacks.RECIPE_KILLING);
         public static final RecipeType REFLECTING = new QDRecipeType("reflecting", QDStacks.RECIPE_REFLECTING);
         public static final RecipeType MOULDING = new QDRecipeType("moulding", QDStacks.RECIPE_MOULDING);
         public static final RecipeType LOOTING = new QDRecipeType("looting", QDStacks.RECIPE_LOOTING);
@@ -27,7 +26,7 @@ public class QDRecipes {
 
     public static ItemStack[] single(ItemStack item) {
         ItemStack[] recipe = new ItemStack[9];
-        recipe[5] = item;
+        recipe[4] = item;
         return recipe;
     }
     

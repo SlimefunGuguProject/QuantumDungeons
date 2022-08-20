@@ -12,7 +12,6 @@ public class SlimeHUDSetup {
     public static void setup() {
         HudController hc = SlimeHUD.getHudController();
 
-
         hc.registerCustomHandler(
             DungeonPortalMound.class,
             (HudRequest request) -> {

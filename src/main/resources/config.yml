@@ -8,33 +8,26 @@ dungeons:
 
   basic:
 
-    # Default cooldown in seconds of how long until the player can create
-    # a new dungeon, starting from catalysis
-    # Default value is 900s or 15min
-    cooldown: 900
-    
-    # Default timer in seconds of how long each dungeon run can last
-    # Default value is 600s or 10min, giving a 5min waiting period if the player
-    # survives until the timer runs out
-    timer: 600
-    
-    # How many rooms connect to a single room, on average
-    branching-factor: 1.25
+    # If not specified, defaults to "schematics/{dungeon name}"
+    config-location: dungeons/basic
 
   vivacious:
 
     cooldown: 1800
     timer: 600
     branching-factor: 1.25
+    config-location: dungeons/vivacious
 
   tenebrous:
 
     cooldown: 1800
     timer: 600
     branching-factor: 1.25
+    config-location: dungeons/tenebrous
 
   ancient:
 
     cooldown: 1800
     timer: 600
     branching-factor: 1.25
+    config-location: dungeons/ancient

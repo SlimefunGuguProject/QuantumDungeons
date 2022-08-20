@@ -25,7 +25,7 @@ public class ThemedItemStack extends SlimefunItemStack {
 
             return new ThemedItemStack(id, material, theme.getColor() + name, flore);
         } else {
-            return new ThemedItemStack(id, material, theme.getColor() + name, lore);
+            return new ThemedItemStack(id, material, theme.getColor() + name);
         }
     }
 

@@ -31,6 +31,8 @@ public class QDItemSetup {
 
         QuantumDungeons qd = QuantumDungeons.getInstance();
 
+        QDGroups.MAIN.register(qd);
+
         // ---- Vanilla Ingredients ----
 
         final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
@@ -50,7 +52,7 @@ public class QDItemSetup {
         new SlimefunItem(
             QDGroups.MATERIALS,
             QDStacks.FRACTURED_REALITY_SHARD,
-            QDRecipeType.KILLING,
+            RecipeType.MOB_DROP,
             QDRecipes.single(QDStacks.GUIDE_VOIDAL)
         ).register(qd);
 
@@ -70,7 +72,7 @@ public class QDItemSetup {
 
         new DungeonPortalMound(
             QDGroups.MATERIALS,
-            QDStacks.DUNGEON_PORTAL_SWITCH,
+            QDStacks.DUNGEON_PORTAL_MOUND,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             QDRecipes.cyclicAlternating(CRYING_OBSIDIAN, QDStacks.RECONSTRUCTED_REALITY_SHARD, GLOWSTONE)
         ).register(qd);
@@ -205,13 +207,12 @@ public class QDItemSetup {
 
         new RecordBooster(
             QDGroups.RECORDS,
-            QDStacks.RECORD_PLAYER,
+            QDStacks.RECORD_BOOSTER,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             QDRecipes.cyclicAlternating(SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.PLASTIC_SHEET, NOTE_BLOCK)
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_VALOR,
             QDRecipeType.LOOTING,
             QDRecipes.single(QDStacks.GUIDE_ANY_CHEST),
@@ -222,18 +223,16 @@ public class QDItemSetup {
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_VALOR_BOOSTED,
             QDRecipeType.BOOSTING,
             QDRecipes.single(QDStacks.RECORD_OF_VALOR),
-            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10*60, 1),
-            new PotionEffect(PotionEffectType.REGENERATION, 10*60, 1),
-            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10*60, 1),
-            new PotionEffect(PotionEffectType.SPEED, 10*60, 1)
+            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15*60, 1),
+            new PotionEffect(PotionEffectType.REGENERATION, 15*60, 1),
+            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 15*60, 1),
+            new PotionEffect(PotionEffectType.SPEED, 15*60, 1)
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_AEGIS,
             QDRecipeType.LOOTING,
             QDRecipes.single(QDStacks.GUIDE_ANY_CHEST),
@@ -241,15 +240,13 @@ public class QDItemSetup {
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_AEGIS_BOOSTED,
             QDRecipeType.BOOSTING,
             QDRecipes.single(QDStacks.RECORD_OF_AEGIS),
-            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10*60, 3)
+            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15*60, 3)
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_ORDER,
             QDRecipeType.LOOTING,
             QDRecipes.single(QDStacks.GUIDE_ANY_CHEST),
@@ -257,15 +254,13 @@ public class QDItemSetup {
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_ORDER_BOOSTED,
             QDRecipeType.BOOSTING,
             QDRecipes.single(QDStacks.RECORD_OF_ORDER),
-            new PotionEffect(PotionEffectType.REGENERATION, 10*60, 3)
+            new PotionEffect(PotionEffectType.REGENERATION, 15*60, 3)
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_POWER,
             QDRecipeType.LOOTING,
             QDRecipes.single(QDStacks.GUIDE_ANY_CHEST),
@@ -273,15 +268,13 @@ public class QDItemSetup {
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_POWER_BOOSTED,
             QDRecipeType.BOOSTING,
             QDRecipes.single(QDStacks.RECORD_OF_POWER),
-            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10*60, 3)
+            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 15*60, 3)
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_HASTE,
             QDRecipeType.LOOTING,
             QDRecipes.single(QDStacks.GUIDE_ANY_CHEST),
@@ -289,11 +282,10 @@ public class QDItemSetup {
         ).register(qd);
 
         new Record(
-            QDGroups.RECORDS,
             QDStacks.RECORD_OF_HASTE_BOOSTED,
             QDRecipeType.BOOSTING,
             QDRecipes.single(QDStacks.RECORD_OF_HASTE),
-            new PotionEffect(PotionEffectType.SPEED, 10*60, 3)
+            new PotionEffect(PotionEffectType.SPEED, 15*60, 3)
         ).register(qd);
 
         // ---- Tokens ----

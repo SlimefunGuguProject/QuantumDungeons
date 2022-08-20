@@ -1,5 +1,8 @@
 package io.github.schntgaispock.quantumdungeons.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Sound;
 
 import io.github.schntgaispock.quantumdungeons.core.music.Score;
@@ -12,20 +15,22 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class QDMusic {
 
-    public static final Score RECORD_OF_VALOR = new Score(3);
-    public static final Score RECORD_OF_VALOR_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_VALOR = new Score(3);
+    private static final Score RECORD_OF_VALOR_BOOSTED = new Score(3);
     
-    public static final Score RECORD_OF_AEGIS = new Score(3);
-    public static final Score RECORD_OF_AEGIS_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_AEGIS = new Score(3);
+    private static final Score RECORD_OF_AEGIS_BOOSTED = new Score(3);
     
-    public static final Score RECORD_OF_ORDER = new Score(3);
-    public static final Score RECORD_OF_ORDER_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_ORDER = new Score(3);
+    private static final Score RECORD_OF_ORDER_BOOSTED = new Score(3);
     
-    public static final Score RECORD_OF_POWER = new Score(3);
-    public static final Score RECORD_OF_POWER_BOOSTED = new Score(3);
+    private static final Score RECORD_OF_POWER = new Score(3);
+    private static final Score RECORD_OF_POWER_BOOSTED = new Score(3);
     
-    public static final Score RECORD_OF_HASTE = new Score(2);
-    public static final Score RECORD_OF_HASTE_BOOSTED = new Score(2);
+    private static final Score RECORD_OF_HASTE = new Score(2);
+    private static final Score RECORD_OF_HASTE_BOOSTED = new Score(2);
+
+    public static final Map<String, Score> SCORES = new HashMap<>();
 
     static {
         RECORD_OF_VALOR
@@ -230,5 +235,16 @@ public class QDMusic {
             .add(6, Pitch.E_0)
             .add(2, Pitch.E_0)
             .add(8, Pitch.D_0);
+
+        SCORES.put("RECORD_OF_VALOR", RECORD_OF_VALOR);
+        SCORES.put("RECORD_OF_VALOR_BOOSTED", RECORD_OF_VALOR_BOOSTED);
+        SCORES.put("RECORD_OF_AEGIS", RECORD_OF_AEGIS);
+        SCORES.put("RECORD_OF_ORDER_BOOSTED", RECORD_OF_AEGIS_BOOSTED);
+        SCORES.put("RECORD_OF_AEGIS", RECORD_OF_ORDER);
+        SCORES.put("RECORD_OF_ORDER_BOOSTED", RECORD_OF_ORDER_BOOSTED);
+        SCORES.put("RECORD_OF_POWER", RECORD_OF_POWER);
+        SCORES.put("RECORD_OF_POWER_BOOSTED", RECORD_OF_POWER_BOOSTED);
+        SCORES.put("RECORD_OF_HASTE", RECORD_OF_HASTE);
+        SCORES.put("RECORD_OF_HASTE_BOOSTED", RECORD_OF_HASTE_BOOSTED);
     }
 }

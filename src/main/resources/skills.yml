@@ -1,0 +1,39 @@
+templates:
+  - name: Throw
+    triggers:
+      - type: range
+        # Of the form {inner-bound};{outer-bound}
+        # Leave either blank for unbounded
+        # If you want both unbounded, just use the `type` always
+        range: 5;
+    # Cooldown in seconds
+    properties:
+      throw-item: item
+    cooldown: 4
+    actions:
+      - type: THROW_PROJECTILE
+        projectile:
+          type: item
+          material: throw-item
+
+entries:
+  - name: Lunge
+    triggers:
+      - type: range
+        range: ;5
+    cooldown: 10
+    actions:
+      - type: JUMP
+        # There are several types of target:
+        # nearest, farthest, aggressor, self, random, and all
+        target: aggressor
+        # Initial speed of the jump, in blocks/tick
+        power: 2
+  
+  - name: Throw Mushroom
+    template: Throw
+    properties:
+      throw-item: RED_MUSHROOM
+
+    
+

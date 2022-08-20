@@ -8,10 +8,10 @@ import net.md_5.bungee.api.ChatColor;
 @UtilityClass
 public final class QDTheme {
     public static enum Theme {
-        DUNGEON("#5a0d6b"),
-        DIMENSIONAL("#cc21b8"),
+        DUNGEON("#cc21b8"),
+        DIMENSIONAL("#7cf7f9"),
         CATALYST("#c4ff0e"),
-        RECORD("#fcfc11"),
+        RECORD("#808080"),
 
         VOID("#706674"),
         LIFE("#34f20e"),
@@ -26,7 +26,7 @@ public final class QDTheme {
         }
 
         Theme(String color) {
-            this(color, "&7");
+            this(color, "#cccccc");
         }
     }
 }

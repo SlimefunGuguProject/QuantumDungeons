@@ -1,0 +1,51 @@
+templates:
+  # A template mob entry
+  - name: Template Dungeon Zombie
+    # Can reference these values later with this.{prop-name}, or from other
+    # templates/mobs with {mob-name}.{prop-name}
+    properties:
+      # Just for the sake of example, normally you
+      # could just set health directly
+      health: int
+    # Will be replaced with properties.health, aka 20
+    health: this.health
+    skills:
+      - Lunge
+    mob: ZOMBIE
+
+entries:
+    # This is the name that will be shown
+  - name: Mushroom Zombie
+    # Name of the template to use, all defined in the `templates`
+    # section above
+    template: Template Dungeon Zombie
+    # Properties defined in a child of a template override
+    # the template's property values
+    properties:
+      health: 30
+    # There is also the `offhand` slot, not shown here
+    equipment:
+      # Values for items can be the material id,
+      head: RED_MUSHROOM_BLOCK
+      # a map of attributes,
+      body:
+        material: LEATHER_CHESTPLATE
+        color: red
+      legs: none
+      boots: none
+      # or a list of possible choices.
+      mainhand:
+        - RED_MUSHROOM
+        - STONE_SWORD
+      # Setting a value to `none` instead of leaving it unset
+      # will override any item that was in that spot initially
+    # No need to specify the `health` attribute, since
+    # the template already sets that
+    skills:
+      # `super` is a keyword that includes everything from
+      # this mob's template
+      - super
+      - Throw Mushroom
+
+
+
