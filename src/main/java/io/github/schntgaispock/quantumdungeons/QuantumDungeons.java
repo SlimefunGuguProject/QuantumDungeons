@@ -34,6 +34,7 @@ public class QuantumDungeons extends AbstractAddon {
 
         getLogger().info("#=========================================#");
         getLogger().info("#    Quantum Dungeons by SchnTgaiSpock    #");
+        getLogger().info("#  汉化by:SlimefunGuguProject,buiawpkgew1 #")
         getLogger().info("#=========================================#");
 
         Metrics metrics = new Metrics(this, 16087);
@@ -49,12 +50,12 @@ public class QuantumDungeons extends AbstractAddon {
 
         if (getInstance().getServer().getPluginManager().isPluginEnabled("SlimeHUD")) {
             try {
-                getLogger().info("SlimeHUD was found on this server!");
-                getLogger().info("Setting up QuantumDungeons for SlimeHUD...");
+                getLogger().info("在这个服务器上发现了SlimeHUD!");
+                getLogger().info("为SlimeHUD设置QuantumDungeons...");
                 SlimeHUDSetup.setup();
             } catch (NoClassDefFoundError e) {
-                getLogger().warning("This server is using an old version of SlimeHUD that is incompatitable with QuantumDungeons.");
-                getLogger().warning("Please update SlimeHUD to version 1.2.0 or higher!");
+                getLogger().warning("这个服务器使用的是旧版本的SlimeHUD，与QuantumDungeons不兼容。");
+                getLogger().warning("请将 SlimeHUD 更新至 1.2.0 或更高版本!");
             }
         }
     }
