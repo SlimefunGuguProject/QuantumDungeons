@@ -93,13 +93,13 @@ public class DungeonPortalMound extends SlimefunItem {
                 break;
 
             default:
-                p.sendMessage("Unknown portal catalyst!");
+                p.sendMessage("未知的门户催化剂!");
                 return;
         }
 
         short connectedFrames = QDBlockStorage.getShort(block, "connected_frames");
         if (connectedFrames < 4) {
-            p.sendMessage("Not enough frames connected!");
+            p.sendMessage("没有足够的框架连接!");
             return;
         }
 
@@ -113,14 +113,14 @@ public class DungeonPortalMound extends SlimefunItem {
                 .get("dungeon"))
                 .check(p.getUniqueId())
         ) {
-            p.sendMessage("Dungeon creation cooldown: " + cooldown.elapsed(p.getUniqueId()) / 1000*60 + "s");
+            p.sendMessage("地下城创建冷却时间: " + cooldown.elapsed(p.getUniqueId()) / 1000*60 + "s");
             return;
         }
 
         // TODO: Check if dungeon world is busy
 
         // TODO: Generate Dungeon
-        p.sendMessage("Creating a(n) " + dungeonType + " dungeon...");
+        p.sendMessage("创建一个" + dungeonType + " 地牢...");
 
         item.setAmount(item.getAmount() - 1);
 
