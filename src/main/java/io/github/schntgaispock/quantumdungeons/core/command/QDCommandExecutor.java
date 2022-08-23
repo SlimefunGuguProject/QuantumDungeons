@@ -30,7 +30,7 @@ public class QDCommandExecutor implements CommandExecutor {
     private void sendInfo(Player player) {
         player.sendMessage(
             "",
-            "§7§lQuantun Dungeons §f- §8Version " + QuantumDungeons.getInstance().getPluginVersion(),
+            "§7§lQuantun Dungeons §f- §8版本 " + QuantumDungeons.getInstance().getPluginVersion(),
             "§f------",
             "§7§lWiki §f- §8https://github.com/SchnTgaiSpock/SlimeHUD/wiki",
             "§7§lIssues §f- §8https://github.com/SchnTgaiSpock/SlimeHUD/issues",
