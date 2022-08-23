@@ -16,7 +16,7 @@ public class SlimeHUDSetup {
         hc.registerCustomHandler(
             DungeonPortalMound.class,
             (HudRequest request) -> {
-                return "&7| Connected frames: " + QDBlockStorage.getShort(request.getLocation(), "connected_frames");
+                return "&7| 连接的框架: " + QDBlockStorage.getShort(request.getLocation(), "connected_frames");
             }
         );
     }
