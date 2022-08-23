@@ -12,12 +12,12 @@ public class QDRecipes {
 
     public static class QDRecipeType extends RecipeType {
 
-        public static final RecipeType REFLECTING = new QDRecipeType("reflecting", QDStacks.RECIPE_REFLECTING);
-        public static final RecipeType MOULDING = new QDRecipeType("moulding", QDStacks.RECIPE_MOULDING);
-        public static final RecipeType KILLING = new QDRecipeType("mending", QDStacks.RECIPE_KILLING);
-        public static final RecipeType LOOTING = new QDRecipeType("looting", QDStacks.RECIPE_LOOTING);
-        public static final RecipeType MENDING = new QDRecipeType("mending", QDStacks.RECIPE_MENDING);
-        public static final RecipeType BOOSTING = new QDRecipeType("boosting", QDStacks.RECIPE_BOOSTING);
+        public static final RecipeType REFLECTING = new QDRecipeType("反映", QDStacks.RECIPE_REFLECTING);
+        public static final RecipeType MOULDING = new QDRecipeType("模制", QDStacks.RECIPE_MOULDING);
+        public static final RecipeType KILLING = new QDRecipeType("杀人修补", QDStacks.RECIPE_KILLING);
+        public static final RecipeType LOOTING = new QDRecipeType("抢夺", QDStacks.RECIPE_LOOTING);
+        public static final RecipeType MENDING = new QDRecipeType("修补", QDStacks.RECIPE_MENDING);
+        public static final RecipeType BOOSTING = new QDRecipeType("增长", QDStacks.RECIPE_BOOSTING);
 
         public QDRecipeType(String key, ItemStack item) {
             super(QuantumDungeons.newNamespacedKey(key), item);
