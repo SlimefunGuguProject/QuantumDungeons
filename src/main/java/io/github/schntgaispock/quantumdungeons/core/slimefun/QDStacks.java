@@ -111,7 +111,7 @@ public class QDStacks {
 
     public static final ItemStack RECIPE_MOULDING = new CustomItemStack(
         Material.CAULDRON,
-        "&b催化剂模具"
+        "&b催化剂模具",
         "&7这个项目是在催化剂模具中制作的。"
     );
     
