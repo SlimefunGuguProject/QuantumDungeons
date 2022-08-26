@@ -34,7 +34,7 @@ public class QuantumDungeons extends AbstractAddon {
 
         getLogger().info("#=========================================#");
         getLogger().info("#    Quantum Dungeons by SchnTgaiSpock    #");
-        getLogger().info("#  汉化by:SlimefunGuguProject,buiawpkgew1 #")
+        getLogger().info("#  汉化by:SlimefunGuguProject,buiawpkgew1 #");
         getLogger().info("#=========================================#");
 
         Metrics metrics = new Metrics(this, 16087);
