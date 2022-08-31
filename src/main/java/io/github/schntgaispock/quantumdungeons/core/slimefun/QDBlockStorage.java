@@ -1,15 +1,10 @@
 package io.github.schntgaispock.quantumdungeons.core.slimefun;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
@@ -18,37 +13,24 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
  */
 @UtilityClass
 public class QDBlockStorage {
-    
-    private static final @Getter ObjectMapper JSONObjectMapper = new ObjectMapper();
-
-    public static Map<String, String> read(Location location) {
-        try {
-            return getJSONObjectMapper().readValue(
-                BlockStorage.getBlockInfoAsJson(location),
-                new TypeReference<HashMap<String, String>>() {}
-            );            
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static Map<String, String> read(Block block) {
-        return read(block.getLocation());
-    }
 
     public static void set(Location location, String key, Object value) {
         BlockStorage.addBlockInfo(location, key, value.toString());
     }
 
-    public static void set(Block block, String key, Object value) {
-        set(block.getLocation(), key, value);
+    public static void setSlimefunBlock(Location location, String id) {
+        BlockStorage.addBlockInfo(location, "id", id);
     }
 
-    public static String get(Location location, String key) {
-        Map<String, String> map = read(location);
-        if (map == null) return null;
-        return map.get(key);
+    @Nonnull
+    private static String get(Location location, String key) {
+        return get(location, key, "0");
+    }
+
+    @Nonnull
+    public static String get(Location location, String key, String def) {
+        String value = BlockStorage.getLocationInfo(location, key);
+        return (value == null) ? def : value;
     }
 
     public static short getShort(Location location, String key) {

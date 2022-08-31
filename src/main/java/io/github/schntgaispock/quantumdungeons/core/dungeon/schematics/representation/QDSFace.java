@@ -3,19 +3,20 @@ package io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.represen
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-
+@ToString
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class QDSFace {
 
     public static enum QDSFaceDirection {
         NORTH, EAST, SOUTH, WEST;
 
         public QDSFaceDirection getOpposite() {
-            return QDSFaceDirection.values()[(this.ordinal() + 2) % 4];
+            return QDSFaceDirection.values()[(this.ordinal() + 2) & 3];
         }
     }
 

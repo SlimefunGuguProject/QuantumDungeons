@@ -1,5 +1,6 @@
 package io.github.schntgaispock.quantumdungeons.core.slimefun;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.schntgaispock.quantumdungeons.QuantumDungeons;
@@ -18,6 +19,7 @@ public class QDRecipes {
         public static final RecipeType LOOTING = new QDRecipeType("looting", QDStacks.RECIPE_LOOTING);
         public static final RecipeType MENDING = new QDRecipeType("mending", QDStacks.RECIPE_MENDING);
         public static final RecipeType BOOSTING = new QDRecipeType("boosting", QDStacks.RECIPE_BOOSTING);
+        public static final RecipeType DUMMY = new QDRecipeType("dummy", new ItemStack(Material.BARRIER));
 
         public QDRecipeType(String key, ItemStack item) {
             super(QuantumDungeons.newNamespacedKey(key), item);

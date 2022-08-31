@@ -9,6 +9,7 @@ import org.bukkit.NamespacedKey;
 
 import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.QDSchematicManager;
+import io.github.schntgaispock.quantumdungeons.core.setup.CommandSetup;
 import io.github.schntgaispock.quantumdungeons.core.setup.ListenerSetup;
 import io.github.schntgaispock.quantumdungeons.core.setup.QDItemSetup;
 import io.github.schntgaispock.quantumdungeons.core.timer.CooldownManager;
@@ -46,6 +47,7 @@ public class QuantumDungeons extends AbstractAddon {
 
         QDItemSetup.setup();
         ListenerSetup.setup();
+        CommandSetup.setup();
 
         if (getInstance().getServer().getPluginManager().isPluginEnabled("SlimeHUD")) {
             try {
