@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Biome;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.representation.QDSFace;
 import io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.representation.QDSchematic;
@@ -17,36 +18,34 @@ public class QDSchematicManager {
 
     private static QDSchematicManager instance;
     
-    private static final @Getter ObjectMapper JSONObjectMapper = new ObjectMapper();
+    private static final @Getter ObjectMapper JSONObjectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
     private static final String SAVED_SCHEMATIC_PATH = "data-storage/QuantumDungeons/schematics/";
     private static final String DEFAULT_SCHEMATIC_PATH = "plugins/QuantumDungeons/schematics/";
 
-    private @Getter Map<String, QDSchematic> loadedSchematics;
-
-    private QDSchematicManager() {
-        loadedSchematics = new HashMap<>();
-    }
+    private final @Getter Map<String, QDSchematic> loadedSchematics = new HashMap<>();
 
     public static QDSchematicManager getInstance() {
         if (instance == null) {
-            return new QDSchematicManager();
+            instance = new QDSchematicManager();
         }
 
         return instance;
     }
-    
+
     public void generateSchematic(
             String name,
             Location corner, int xLen, int yLen, int zLen,
             QDSFace northFace, QDSFace eastFace, QDSFace southFace, QDSFace westFace
     ) {
-        loadedSchematics.put(name, new QDSchematic(1, corner, xLen, yLen, zLen, Biome.LUSH_CAVES, northFace, eastFace, southFace, westFace));
+        getLoadedSchematics().put(name, new QDSchematic(1, corner, xLen, yLen, zLen, Biome.LUSH_CAVES, northFace, eastFace, southFace, westFace));
     }
 
     public QDSchematic readFromFile(String fullPath) {
         try {
-            return getJSONObjectMapper().readValue(new File(fullPath), QDSchematic.class);
+            QDSchematic test = getJSONObjectMapper().readValue(new File(fullPath), QDSchematic.class);
+            System.out.println(test);
+            return test;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -66,9 +65,12 @@ public class QDSchematicManager {
     }
     
 
-    public void saveToFile(String fullPath, String schematicKey) {
+    private void saveToFile(String fullPath, String schematicKey) {
         try {
-            getJSONObjectMapper().writeValue(new File(fullPath), loadedSchematics.get(schematicKey));
+            File file = new File(fullPath);
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            getJSONObjectMapper().writeValue(file, loadedSchematics.get(schematicKey));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,7 +84,7 @@ public class QDSchematicManager {
         saveToFile(SAVED_SCHEMATIC_PATH, filename, schematicKey);
     }
 
-    public void saveToFile(String path, String filename, String schematicKey) {
+    private void saveToFile(String path, String filename, String schematicKey) {
         saveToFile(path + filename, schematicKey);
     }
 

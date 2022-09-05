@@ -3,9 +3,14 @@ package io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.represen
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
+import javax.management.ConstructorParameters;
+
+import org.bukkit.Axis;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -14,8 +19,13 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
+import org.bukkit.block.data.MultipleFacing;
+import org.bukkit.block.data.Orientable;
+import org.bukkit.block.data.Rotatable;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import io.github.schntgaispock.quantumdungeons.core.slimefun.QDBlockStorage;
 import lombok.Getter;
@@ -25,16 +35,26 @@ import lombok.ToString;
 @Getter
 public class QDSchematic {
 
-    @JsonProperty("blocks")
     private final int[][][] blocks;
-    @JsonProperty("palette")
     private final List<QDSBlockState> palette;
-    @JsonProperty("biome")
     private final Biome biome;
-    @JsonProperty("faces")
     private final List<QDSFace> faces;
-    @JsonProperty("version")
     private final int version;
+
+    @ConstructorParameters({"blocks", "palette", "biome", "faces", "version"})
+    @JsonCreator(mode = Mode.PROPERTIES)
+    public QDSchematic(
+        @JsonProperty("blocks") int[][][] blocks,
+        @JsonProperty("palette") List<QDSBlockState> palette,
+        @JsonProperty("biome") Biome biome,
+        @JsonProperty("faces") List<QDSFace> faces,
+        @JsonProperty("version") int version) {
+        this.blocks = blocks;
+        this.palette = palette;
+        this.biome = biome;
+        this.faces = faces;
+        this.version = version;
+    }
 
     public QDSchematic(
             int version,
@@ -117,7 +137,7 @@ public class QDSchematic {
             px = descCheck;
         }
 
-        if (((rotation - 1) & 3) < 3) {
+        if (((rotation - 1) & 3) < 2) {
             z0 = zLen - 1;
             dz = -1;
             pz = descCheck;
@@ -129,18 +149,39 @@ public class QDSchematic {
             };
         }
 
+        int bx = 0;
         for (int x = x0; px.test(x); x += dx) {
 
             for (int y = 0; y < yLen; y++) {
 
+                int bz = 0;
                 for (int z = z0; pz.test(z); z += dz) {
 
-                    QDSBlockState state = palette.get(blocks[x][y][z]);
+                    int stateId = blocks[bx][y][bz];
+                    bz++;
+                    if (stateId == 0) continue;
+
+                    QDSBlockState state = palette.get(stateId - 1);
                     Block b = getWorldBlock.apply(new Integer[] {x + l.getBlockX(), y + l.getBlockY(), z + l.getBlockZ()});
                     BlockData data = Bukkit.createBlockData(state.getData());
 
                     if (data instanceof Directional directional) {
                         directional.setFacing(rotateBlockFace(directional.getFacing(), rotation));
+                    } else if (data instanceof Rotatable rotatable) {
+                        rotatable.setRotation(rotateBlockFace(rotatable.getRotation(), rotation));
+                    } else if (data instanceof Orientable orientable) {
+                        orientable.setAxis(rotateAxis(orientable.getAxis(), rotation));
+                    } else if (data instanceof MultipleFacing multipleFacing) {
+                        Set<BlockFace> rotated = multipleFacing
+                            .getFaces()
+                            .stream()
+                            .map((BlockFace face) -> {
+                                return rotateBlockFace(face, rotation);
+                            })
+                            .collect(Collectors.toSet());
+                        for (BlockFace face : multipleFacing.getAllowedFaces()) {
+                            multipleFacing.setFace(face, rotated.contains(face));
+                        }
                     }
 
                     b.setBlockData(data);
@@ -149,17 +190,21 @@ public class QDSchematic {
                     if (slimefunId != null) {
                         QDBlockStorage.setSlimefunBlock(b.getLocation(), slimefunId);
                     }
-
+                    
                 }
 
             }
 
+            bx++;
         }
 
     }
 
     private BlockFace rotateBlockFace(BlockFace f, int rotation) {
-        rotation = rotation & 3;
+        rotation &= 3;
+
+        if (rotation == 0) return f;
+
         BlockFace rotatedOnce = switch (f) {
             case NORTH -> BlockFace.EAST;
             case EAST -> BlockFace.SOUTH;
@@ -180,11 +225,11 @@ public class QDSchematic {
             default -> f;
         };
 
-        if (rotation == 1) {
-            return rotatedOnce;
-        } else {
-            return rotateBlockFace(rotatedOnce, rotation - 1);
-        }
+        return rotateBlockFace(rotatedOnce, rotation - 1);
     }
 
+    private Axis rotateAxis(Axis a, int rotation) {
+        if (a == Axis.Y) return a;
+        return ((rotation & 1) == 1) ^ (a == Axis.Z) ? Axis.Z : Axis.X;
+    }
 }

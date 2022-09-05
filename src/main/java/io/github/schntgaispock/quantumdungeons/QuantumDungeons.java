@@ -55,7 +55,7 @@ public class QuantumDungeons extends AbstractAddon {
                 getLogger().info("Setting up QuantumDungeons for SlimeHUD...");
                 SlimeHUDSetup.setup();
             } catch (NoClassDefFoundError e) {
-                getLogger().warning("This server is using an old version of SlimeHUD that is incompatitable with QuantumDungeons.");
+                getLogger().warning("This server is using an old version of SlimeHUD that is incompatitable with this version of QuantumDungeons.");
                 getLogger().warning("Please update SlimeHUD to version 1.2.0 or higher!");
             }
         }

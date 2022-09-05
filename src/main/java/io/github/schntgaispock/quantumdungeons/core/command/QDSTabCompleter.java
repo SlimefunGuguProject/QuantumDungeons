@@ -29,19 +29,10 @@ public class QDSTabCompleter implements TabCompleter {
         }
 
         if (args.length == 1) {
-            return Arrays.asList("paste", "copy", "load", "save");
+            return Arrays.asList("copy", "paste", "save", "load", "print", "list", "clear");
         }
         
         switch (args[0]) {
-            case "load":
-                return Arrays.asList("name");
-
-            case "save":
-                return Arrays.asList("name");
-
-            case "paste":
-                return Arrays.asList("name");
-
             case "copy":
                 Location lookingAt = player.getTargetBlockExact(5, FluidCollisionMode.NEVER).getLocation();
                 int x = lookingAt.getBlockX();
@@ -52,36 +43,45 @@ public class QDSTabCompleter implements TabCompleter {
                     .stream(QDSFaceConnection.values())
                     .map((QDSFaceConnection c) -> {return c.name(); });
 
-                switch (args.length) {
-                    case 2:
-                        return Arrays.asList(
-                            x + "",
+                return switch (args.length) {
+                    case 2 -> Arrays.asList(
+                            Integer.toString(x),
                             x + " " + y,
                             x + " " + y + " " + z
                         );
-                    case 3:
-                        return Arrays.asList(
-                            y + "",
+                    case 3 -> Arrays.asList(
+                            Integer.toString(y),
                             y + " " + z
                         );
-                    case 4:
-                        return Arrays.asList(
-                            z + ""
+                    case 4 -> Arrays.asList(
+                            Integer.toString(z)
                         );
-                    case 5, 7, 9, 11:
-                        return faces.filter((String face) -> (face.startsWith(args[args.length - 1]))).toList();
+                    case 5, 7, 9, 11 -> faces.filter((String face) -> (face.startsWith(args[args.length - 1]))).toList();
+                    case 6, 8, 10, 12 -> Arrays.asList("0");
+                    default -> null;
+                };
 
-                    case 6, 8, 10, 12:
-                        return Arrays.asList("0");
-                
-                    default:
-                        return null;
-                }
+            case "paste":
+                return Arrays.asList("name");
+
+            case "save":
+                return Arrays.asList("name");
+
+            case "load":
+                return Arrays.asList("name");
+
+            case "list":
+                return null;
+
+            case "print":
+                return Arrays.asList("name");
+
+            case "clear":
+                return Arrays.asList("name");
         
             default:
-                break;
-        }
+                return null;
 
-        return null;
+        }
     }
 }

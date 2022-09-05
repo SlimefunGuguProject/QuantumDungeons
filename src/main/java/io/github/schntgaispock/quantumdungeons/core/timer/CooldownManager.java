@@ -21,7 +21,7 @@ public class CooldownManager {
 
     public static CooldownManager getInstance() {
         if (instance == null) {
-            return new CooldownManager();
+            instance = new CooldownManager();
         }
 
         return instance;
