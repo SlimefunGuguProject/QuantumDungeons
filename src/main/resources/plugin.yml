@@ -19,7 +19,12 @@ softdepend:
 - SlimeHUD
 
 commands:
-  slimehud:
+  quantumdungeons:
     description: /quantumdungeons
     aliases: [qdungeons, qd]
     usage: Press [tab] for usage hints
+  quantumdungeonsschematic:
+    description: /quantumdungeonsschematic
+    aliases: [qdschematic, qds]
+    usage: Press [tab] for usage hints
+    permissions: quantumdungeons.schematic

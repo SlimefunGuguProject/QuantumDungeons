@@ -3,19 +3,21 @@ package io.github.schntgaispock.quantumdungeons.core.dungeon.schematics.represen
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-
+@ToString
 @Getter
-@RequiredArgsConstructor
 public class QDSFace {
 
     public static enum QDSFaceDirection {
         NORTH, EAST, SOUTH, WEST;
 
         public QDSFaceDirection getOpposite() {
-            return QDSFaceDirection.values()[(this.ordinal() + 2) % 4];
+            return QDSFaceDirection.values()[(this.ordinal() + 2) & 3];
         }
     }
 
@@ -53,9 +55,19 @@ public class QDSFace {
         }
     }
 
-    private QDSFaceDirection direction;
-    private QDSFaceConnection connection;
-    private int offset;
+    private final QDSFaceDirection direction;
+    private final QDSFaceConnection connection;
+    private final int offset;
+
+    @JsonCreator
+    public QDSFace(
+            @JsonProperty("direction") QDSFaceDirection direction,
+            @JsonProperty("connection") QDSFaceConnection connection,
+            @JsonProperty("offset") int offset) {
+        this.direction = direction;
+        this.connection = connection;
+        this.offset = offset;
+    }
 
     public int canConnect(QDSFace other) {
         if (other.getDirection().getOpposite() != getDirection()) return -1;

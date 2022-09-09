@@ -49,18 +49,18 @@ public class DungeonPortalMound extends SlimefunItem {
             @EventHandler
             @ParametersAreNonnullByDefault
             public void onPlayerPlace(BlockPlaceEvent e) {
-                Block block = e.getBlock();
+                Location l = e.getBlock().getLocation();
 
                 short connected = 0;
                 for (Vector vector : searchLocations) {
-                    Location newLocation = block.getLocation().add(vector);
+                    Location newLocation = l.add(vector);
 
                     if (BlockStorage.check(newLocation, "DUNGEON_PORTAL_FRAME")) connected++;
 
                 }
 
-                QDBlockStorage.set(block, "connected_frames", connected);
-                updateLocation(block.getLocation());
+                QDBlockStorage.set(l, "connected_frames", connected);
+                updateLocation(l);
             }
         });
     }
