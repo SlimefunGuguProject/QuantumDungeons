@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a Bug or an Issue with Quantum Dungeons.
+about: Report a Bug or an Issue with Strophodungeons.
 title: ''
 labels: bug
 assignees: ''

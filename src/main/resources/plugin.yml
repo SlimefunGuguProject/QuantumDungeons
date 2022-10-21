@@ -1,12 +1,12 @@
-name: QuantumDungeons
+name: Strophodungeons
 
 author: SchnTgaiSpock
 
 description: A Slimefun addon that adds infinite dungeons to Minecraft
 
-main: io.github.schntgaispock.quantumdungeons.QuantumDungeons
+main: io.github.schntgaispock.strophodungeons.Strophodungeons
 
-website: https://github.com/SchnTgaiSpock/QuantumDungeons
+website: https://github.com/SchnTgaiSpock/Strophodungeons
 
 version: ${project.version}
 
@@ -19,12 +19,12 @@ softdepend:
 - SlimeHUD
 
 commands:
-  quantumdungeons:
-    description: /quantumdungeons
-    aliases: [qdungeons, qd]
+  strophodungeons:
+    description: /strophodungeons
+    aliases: [sdungeons, sd]
     usage: Press [tab] for usage hints
-  quantumdungeonsschematic:
-    description: /quantumdungeonsschematic
-    aliases: [qdschematic, qds]
+  strophodungeonsschematic:
+    description: /strophodungeonsschematic
+    aliases: [sdschematic, sds]
     usage: Press [tab] for usage hints
-    permissions: quantumdungeons.schematic
+    permissions: strophodungeons.schematic

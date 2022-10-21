@@ -1,8 +1,7 @@
-# Quantum Dungeons - WIP
+# Strophodungeons - WIP
 
-A Slimefun addon that adds infinite dungeons to Minecraft. It generates rooms and hallways using a modified 2D wave function collapse algorithm. Dungeons are generated in a separate world (specified in config). Check out the [wiki](https://github.com/SchnTgaiSpock/QuantumDungeons/wiki) for more details.
+A Slimefun addon that adds infinite dungeons to Minecraft. Dungeons are generated in a separate world (specified in config). Check out the [wiki](https://github.com/SchnTgaiSpock/Strophodungeons/wiki) for more details.
 
-## Credits
+## Gameplay
 
-*InfinityLib* by Mooy1  
-*Lombok* by Project Lombok
+This section is a WIP, please see the wiki for now.
